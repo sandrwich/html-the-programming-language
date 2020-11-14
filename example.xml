@@ -1,0 +1,44 @@
+<!-- Schema based definition -->
+<Type name="Text" schema="https://html-the-programming-language.com/type/Text"/>
+<Type name="Collection" schema="https://html-the-programming-language.com/type/Collection"/>
+<Type name="Number" schema="https://html-the-programming-language.com/type/Number"/>
+
+<!-- Custom type -->
+<Type name="User">
+    <FieldSet>
+        <FieldRule name="name" type="Text"/>
+        <FieldRule name="roles" type="Collection"/>
+    </FieldSet>
+</Type>
+
+<!-- Variable declaration -->
+<Variable name="user" type="User">
+    <Fields>
+        <Field name="name" value="Kamil"/>
+        <Field name="roles">
+            <Value>admin</Value>
+            <Value>manager</Value>
+        </Field>
+    </Fields>
+</Variable>
+
+<!-- Schema based conditions -->
+<Condition id="contains" schema="https://html-the-programming-language.com/condition/contains"/>
+
+<!-- Conditional statements -->
+<If var="user.roles" condition="#contains" arg="admin">
+    <IfTrue>
+        <p>Czesc admin <Variable name="user" property="name" role="display"/>!</p>
+    </IfTrue>
+    <IfFalse>
+        <p>Czesc <Variable name="user" property="name" role="display"/>!</p>
+    </IfFalse>
+</If>
+
+<!-- Math -->
+<Variable name="num" type="Number"/>
+<Calculate action="plus" store="num">
+    <Operand>1</Operand>
+    <Operand>2</Operand>
+</Calculate>
+<p>Wynik obliczenia 1+2 to: <Variable name="num" role="display"/></p>
